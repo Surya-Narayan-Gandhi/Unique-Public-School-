@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Unique Public School - Premium Education Portal">
+    <title>Unique Public School | Premium Education Portal</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==================== PREMIUM COLOR PALETTE ==================== */
+        :root {
+            --primary: #0a1f3d;      /* Premium Navy Blue */
+            --secondary: #0056b3;    /* Bright Blue */
+            --accent: #f59e0b;       /* Gold/Saffron */
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --text-main: #334155;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        .hindi { font-family: 'Yatra One', cursive; letter-spacing: 1px; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+        /* ==================== 1. TOP INFO BAR ==================== */
+        .top-bar { background: var(--primary); color: #e2e8f0; font-size: 0.85rem; padding: 8px 0; border-bottom: 3px solid var(--accent); }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-contact span { margin-right: 20px; }
+        .top-contact i { color: var(--accent); margin-right: 5px; }
+        .top-social a { color: #e2e8f0; margin-left: 15px; font-size: 1rem; }
+        .top-social a:hover { color: var(--accent); }
+
+        /* ==================== 2. HEADER ==================== */
+        .header { background: var(--white); padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
+        .brand { display: flex; align-items: center; gap: 20px; }
+        .logo { width: 85px; height: 85px; object-fit: cover; border-radius: 50%; border: 2px solid var(--accent); padding: 2px; }
+        .school-name h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: -5px; }
+        .school-name h1 { font-size: 2.2rem; color: var(--primary); font-weight: 700; line-height: 1.2; }
+        .school-name p { font-size: 0.85rem; color: #64748b; font-weight: 500; }
+        .cbse-logo { width: 80px; opacity: 0.9; }
+
+        /* ==================== 3. NAVBAR ==================== */
+        .navbar { background: var(--white); position: sticky; top: 0; z-index: 1000; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .nav-list { display: flex; justify-content: center; }
+        .nav-list > li { position: relative; }
+        .nav-list > li > a { display: block; padding: 15px 25px; color: var(--primary); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; border-bottom: 3px solid transparent; }
+        .nav-list > li > a:hover { color: var(--secondary); border-bottom: 3px solid var(--accent); background: #f8fafc; }
+
+        /* ==================== 4. NEWS TICKER ==================== */
+        .ticker { display: flex; background: var(--white); border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
+        .ticker-title { background: var(--accent); color: var(--primary); padding: 10px 20px; font-weight: 700; white-space: nowrap; }
+        .ticker-text { width: 100%; padding: 10px; color: var(--primary); font-weight: 500; display: flex; align-items: center; }
+
+        /* ==================== 5. PREMIUM HERO SLIDER ==================== */
+        .hero { position: relative; height: 500px; width: 100%; overflow: hidden; background: #000; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; }
+        .slide.active { opacity: 1; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+        .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; width: 80%; }
+        .hero-content h2 { font-size: 3.5rem; font-weight: 700; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero-content p { font-size: 1.2rem; font-weight: 300; margin-bottom: 25px; }
+        .hero-btn { background: var(--accent); color: var(--primary); padding: 12px 30px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; border: none; cursor: pointer; transition: 0.3s; }
+        .hero-btn:hover { background: var(--white); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* ==================== 6. MAIN CONTENT SECTION ==================== */
+        .section-padding { padding: 50px 0; }
+        .section-title { text-align: center; font-size: 2rem; color: var(--primary); margin-bottom: 40px; position: relative; }
+        .section-title::after { content: ''; width: 60px; height: 4px; background: var(--accent); display: block; margin: 10px auto 0; border-radius: 2px; }
+        
+        .layout-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; }
+        
+        .card { background: var(--white); border-radius: 12px; box-shadow: var(--shadow); border: 1px solid var(--border-color); overflow: hidden; transition: 0.3s; }
+        .card:hover { box-shadow: var(--shadow-hover); }
+        .card-header { background: var(--primary); color: white; padding: 15px 20px; font-size: 1.2rem; font-weight: 600; border-bottom: 3px solid var(--accent); display: flex; align-items: center; gap: 10px; }
+
+        /* Principal Desk */
+        .principal-content { padding: 25px; display: flex; gap: 25px; align-items: flex-start; }
+        /*.principal-img { width: 140px; height: 160px; object-fit: cover; border-radius: 8px; border: 3px solid var(--border-color); }*/
+        .principal-img { 
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 3px solid var(--accent); 
+    padding: 4px; 
+    flex-shrink: 0; /* Yeh line image ko dabne ya oval hone se rokegi */
+}
+        .principal-text h3 { color: var(--primary); font-size: 1.3rem; }
+        .principal-text h4 { color: var(--accent); font-size: 0.9rem; margin-bottom: 10px; }
+        .principal-text p { font-size: 0.95rem; color: #475569; text-align: justify; }
+
+        /* Notice Board Tabs */
+        .tabs { display: flex; background: #f1f5f9; }
+        .tab-btn { flex: 1; padding: 12px; border: none; background: transparent; font-weight: 600; cursor: pointer; color: #64748b; font-size: 1rem; transition: 0.3s; }
+        .tab-btn.active { background: var(--white); color: var(--primary); border-top: 3px solid var(--accent); }
+        .tab-content { display: none; padding: 20px; height: 320px; overflow-y: auto; }
+        .tab-content.active { display: block; }
+        
+        .notice-item { display: flex; gap: 15px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed var(--border-color); }
+        .date-badge { background: var(--primary); color: white; padding: 8px; text-align: center; border-radius: 6px; min-width: 60px; height: fit-content; }
+        .date-badge strong { display: block; font-size: 1.1rem; line-height: 1; }
+        .date-badge span { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; }
+        .notice-link { color: var(--text-main); font-size: 0.95rem; font-weight: 500; }
+        .notice-link:hover { color: var(--secondary); text-decoration: underline; }
+        .new-tag { color: #ef4444; font-size: 0.7rem; font-weight: 700; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* ==================== 7. ATTRACTIVE GALLERY ==================== */
+        .gallery-section { background: var(--white); padding: 50px 0; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        
+        .gallery-item { position: relative; overflow: hidden; border-radius: 12px; height: 220px; box-shadow: var(--shadow); cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        
+        .gallery-overlay { position: absolute; bottom: -100%; left: 0; width: 100%; background: linear-gradient(transparent, rgba(10, 31, 61, 0.9)); padding: 20px; color: white; transition: bottom 0.4s ease; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item:hover .gallery-overlay { bottom: 0; }
+        .gallery-overlay h3 { font-size: 1.1rem; margin-bottom: 5px; color: var(--accent); }
+        .gallery-overlay p { font-size: 0.85rem; opacity: 0.9; }
+
+        /* ==================== 8. FEE STRUCTURE TABLE ==================== */
+        .fee-table { width: 100%; border-collapse: collapse; margin-top: 20px; border-radius: 8px; overflow: hidden; }
+        .fee-table th, .fee-table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        .fee-table th { background: var(--primary); color: white; font-weight: 600; }
+        .fee-table tr:nth-child(even) { background-color: #f8fafc; }
+        .fee-table tr:hover { background-color: #f1f5f9; }
+        .fee-table td:first-child { font-weight: 600; color: var(--primary); }
+
+        /* ==================== 9. FOOTER ==================== */
+        .footer { background: var(--primary); color: #cbd5e1; padding: 60px 0 20px; margin-top: 40px; border-top: 5px solid var(--accent); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3 { color: white; font-size: 1.2rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); display: inline-block; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+        .footer-contact li { display: flex; gap: 10px; margin-bottom: 15px; }
+        .footer-contact i { color: var(--accent); margin-top: 4px; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 992px) {
+            .layout-grid { grid-template-columns: 1fr; }
+            .header .container { flex-direction: column; text-align: center; gap: 10px; }
+            .brand { flex-direction: column; }
+            .nav-list { flex-wrap: wrap; }
+            .nav-list > li > a { padding: 10px 15px; font-size: 0.8rem; }
+        }
+        @media (max-width: 768px) {
+            .top-bar { display: none; }
+            .hero { height: 350px; }
+            .hero-content h2 { font-size: 2rem; }
+            .principal-content { flex-direction: column; align-items: center; text-align: center; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-contact">
+                <span><i class="fas fa-phone"></i> +91 99731 65778</span>
+                <span><i class="fas fa-envelope"></i> rajeshmadhura54@gmail.com</span>
+                <span><i class="fas fa-map-marker-alt"></i> Madhura,Samda,Supaul,Bihar, India</span>
+            </div>
+            <div class="top-social">
+                <a href="https://www.facebook.com/share/1GwaMxE9BG/"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@upsmadhura123"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="brand">
+                <img src="UPS.jpeg" alt="Logo" class="logo">
+                <div class="school-name">
+                    <h2 class="hindi">यूनिक पब्लिक स्कूल</h2>
+                    <h1>UNIQUE PUBLIC SCHOOL</h1>
+                    <p>Recognized by Dept. of Education Bihar| UDISE Code: 10060100803 | Reg.No: 20811022021928103319</p>
+                </div>
+            </div>
+            <img src="https://media.licdn.com/dms/image/v2/C510BAQGnFHQ8qXCNLg/company-logo_200_200/company-logo_200_200/0/1631435897110/government_of_bihar_logo?e=2147483647&v=beta&t=DqesNTFwsSCkdA0WSK0xrcCn66rYya2RjOVfCO0ilNk" alt="Govt Logo" class="cbse-logo">
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#fee-structure">Admissions & Fees</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="ticker">
+        <div class="ticker-title"><i class="fas fa-bell"></i> Latest Updates</div>
+        <div class="ticker-text">
+            <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                <span style="color:#ef4444;">★ ADMISSION OPEN:</span> Registration for Academic Session 2026-27 is ongoing from Nursery to Class VIII. &nbsp;&nbsp;&nbsp; 
+                <span style="color:#ef4444;">★</span> Summer Camp starting from 22 June 2026. &nbsp;&nbsp;&nbsp;
+                <span style="color:#ef4444;">★</span> School timings changed to 06:30 AM - 12:00 PM.
+            </marquee>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="slide active">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTToaH4K9-l_tMcd5hEYKgBiEtu233UdDM0kA&s" alt="Campus">
+            <div class="hero-content">
+                <h2>Empowering Minds, Shaping Futures.</h2>
+                <p>A premium educational institution dedicated to academic excellence and holistic development.</p>
+                <button class="hero-btn" onclick="document.getElementById('fee-structure').scrollIntoView();">Apply For Admission</button>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=60" alt="Students">
+            <div class="hero-content">
+                <h2>World-Class Infrastructure</h2>
+                <p>Smart classrooms, modern labs, and expansive sports facilities for our students.</p>
+                <button class="hero-btn" onclick="document.getElementById('gallery').scrollIntoView();">View Campus Gallery</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="container section-padding" id="about">
+        <div class="layout-grid">
+            
+            <div class="card">
+                <div class="card-header"><i class="fas fa-user-tie"></i> Director-cum-Principal's Desk</div>
+                <div class="principal-content">
+                    <img src="Director.jpeg" alt="Principal" class="principal-img">
+                    <div class="principal-text">
+                        <h3>Mr.Rajesh Kumar Poddar</h3>
+                        <h4>M.A, B.Ed (Education)</h4>
+                        <p>"Welcome to Unique Public School. We believe that education is the fundamental pillar of nation-building. Our mission is to provide an environment where every child discovers their true potential, builds unwavering character, and acquires the skills needed for global success.</p>
+                        <p style="margin-top: 10px;">We strictly adhere to the policies of the Education Department to ensure equal opportunity, discipline, and academic excellence."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openTab(event, 'notices')"><i class="fas fa-clipboard-list"></i> Notices</button>
+                    <button class="tab-btn" onclick="openTab(event, 'circulars')"><i class="fas fa-file-alt"></i> Circulars</button>
+                </div>
+                
+                <div id="notices" class="tab-content active">
+                    <div class="notice-item">
+                        <div class="date-badge"><strong>15</strong><span>May</span></div>
+                        <a href="#" class="notice-link">Admission Form available for Academic Session 2026-27 <span class="new-tag">NEW</span></a>
+                    </div>
+                    <div class="notice-item">
+                        <div class="date-badge"><strong>10</strong><span>May</span></div>
+                        <a href="#" class="notice-link">Schedule for Half-Yearly Board Examinations</a>
+                    </div>
+                    <div class="notice-item">
+                        <div class="date-badge"><strong>02</strong><span>May</span></div>
+                        <a href="#" class="notice-link">List of Holidays for the Month of June 2026</a>
+                    </div>
+                    <div class="notice-item">
+                        <div class="date-badge"><strong>28</strong><span>Apr</span></div>
+                        <a href="#" class="notice-link">Results of Inter-School Science Exhibition 2026</a>
+                    </div>
+                </div>
+
+                <div id="circulars" class="tab-content">
+                    <div class="notice-item">
+                        <div class="date-badge" style="background:var(--secondary);"><strong>CIR</strong><span>012</span></div>
+                        <a href="#" class="notice-link">Guidelines for Parent-Teacher Meeting (Offline Mode)</a>
+                    </div>
+                    <div class="notice-item">
+                        <div class="date-badge" style="background:var(--secondary);"><strong>CIR</strong><span>011</span></div>
+                        <a href="#" class="notice-link">Regarding Uniform and ID Card compliance for students.</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Campus Gallery</h2>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="Smart Class" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3><i class="fas fa-chalkboard-teacher"></i> Smart Classrooms</h3>
+                        <p>Interactive digital boards for modern learning.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="Library" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3><i class="fas fa-book-reader"></i> Digital Library</h3>
+                        <p>Thousands of books and e-resources available.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://www.ghsallahabad.org/wp-content/uploads/2019/04/science-lab.jpg" alt="Lab" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3><i class="fas fa-flask"></i> Science Labs</h3>
+                        <p>Fully equipped practical laboratories.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="Playground" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3><i class="fas fa-futbol"></i> Sports Complex</h3>
+                        <p>Expansive playground for physical development.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="Computer Lab" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3><i class="fas fa-desktop"></i> Computer Lab</h3>
+                        <p>High-speed internet and latest systems.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="Hostel" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3><i class="fas fa-bed"></i> Safe Hostel</h3>
+                        <p>Hygienic and secure boarding facilities.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="container section-padding" id="fee-structure">
+        <div class="card">
+            <div class="card-header"><i class="fas fa-rupee-sign"></i> Approved Fee Structure (Session 2026-27)</div>
+            <div style="padding: 20px; overflow-x: auto;">
+                <table class="fee-table">
+                    <thead>
+                        <tr>
+                            <th>Class Segment</th>
+                            <th>Admission Fee (One Time)</th>
+                            <th>Monthly Tuition Fee</th>
+                            <th>Annual Charges</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nursery - UKG</td>
+                            <td>₹ 1,000</td>
+                            <td>₹ 500</td>
+                            <td>₹ 500</td>
+                        </tr>
+                        <tr>
+                            <td>Class I - Class III</td>
+                            <td>₹ 1,000</td>
+                            <td>₹ 500</td>
+                            <td>₹ 1,000</td>
+                        </tr>
+                        <tr>
+                            <td>Class IV - Class V</td>
+                            <td>₹ 1,000</td>
+                            <td>₹ 550</td>
+                            <td>₹ 1,000</td>
+                        </tr>
+                        <tr>
+                            <td>Class VI - Class VIII</td>
+                            <td>₹ 1,500</td>
+                            <td>₹ 650</td>
+                            <td>₹ 1,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="color: #ef4444; font-size: 0.85rem; font-style: italic; margin-top: 15px;">* Note: Fee structure is transparent and as per the norms of the Management Committee. It can be changed by school management with prior notice.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>About School</h3>
+                <p style="text-align: justify; font-size: 0.9rem;">Unique Public School provides quality education in a secure environment. We focus on holistic development, blending modern tech with traditional values to create future leaders.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Admission Form</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Online Fee Payment</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Mandatory Disclosure</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Careers / Vacancy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> <span>Madhura, Samda,Supaul,Bihar, Pin - 854338</span></li>
+                    <li><i class="fas fa-phone"></i> <span>+91 99731 65778</span></li>
+                    <li><i class="fas fa-envelope"></i> <span>rajeshmadhura54@gmail.com</span></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2026 Unique Public School.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hero Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+        
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 5000); // 5 seconds change
+
+        // Tabbed Notice Board
+        function openTab(evt, tabName) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
